@@ -7,8 +7,11 @@ The purpose of this report is to provide an understanding on monitoring AWS Pers
 ## Diagram
 ![alt text](https://github.com/omidayoobe/sparta_work/blob/master/src/aws_diagram.png)
 
-## Scope:
+## Main 
 
+
+## Goal
+The goal of this project is to set up the infrastructure, where when an event occurs in AWS Personal Health Dashboard, the lambda should pick up the payload and send the main information to a slack channel. This will allow the team to take actions on time in order to make sure the infrastructure is efficient and resilient. 
 
 ## Resources and languages
 - Terraform
