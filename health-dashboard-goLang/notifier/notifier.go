@@ -28,5 +28,10 @@ func CloudWatchEventToMessage(source []byte) (*SlackMessage, error) {
 	if err := json.Unmarshal(source, &event); err != nil {
 		return nil, err
 	}
-	return err, nil
+
+	msg := &SlackMessage{
+		IconEmoji: ":warning:",
+		Text:     event.EventType,
+	}
+	return msg, nil
 }
