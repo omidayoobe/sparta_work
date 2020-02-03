@@ -1,6 +1,8 @@
 package notifier
 
-import "testing"
+import (
+	"testing"
+	)
 
 const payload = `
 {
