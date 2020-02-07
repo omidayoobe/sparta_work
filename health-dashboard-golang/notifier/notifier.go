@@ -1,6 +1,10 @@
 package notifier
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"fmt"
+	"strings"
+)
 
 type SlackMessage struct {
 	Text      string  `json:"text"`
@@ -31,7 +35,15 @@ func CloudWatchEventToMessage(source []byte) (*SlackMessage, error) {
 
 	msg := &SlackMessage{
 		IconEmoji: ":warning:",
-		Text:     event.EventType,
+		Text:      textForEvent(event),
 	}
 	return msg, nil
+}
+
+func textForEvent(event CloudwatchEvent) string {
+	description := strings.Split(event.EventDescription[0].LatestDescription, "  ")
+	sb := strings.Builder{}
+	sb.WriteString(fmt.Sprintf("*Service:* %v\n*Event Name:* \n%v\n\n*Event Description:* \n%v\n\n*Affected Entities:* \n*%v*",
+		event.Service, event.EventType, description[0], event.AffectedEntities[0].EntityValue))
+	return sb.String()
 }
