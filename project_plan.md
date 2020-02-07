@@ -5,7 +5,7 @@
 The purpose of this report is to provide an understanding on monitoring AWS Personal Health Dashboard using Golang, Terraform and Slack. When an event occurs in AWS Personal health dashboard, it is mainly due to a resource within the account that needs attention. This could be a certificate expiring or an EC2 instance going down. In a big organisation managing 20+ accounts, keeping track of each account becomes impracticable, hence you set monitoring alerts to notify you when an event occurs.
 
 ## Diagram
-![alt text](https://github.com/omidayoobe/sparta_work/blob/master/src/aws_diagram.png)
+![alt text](https://github.com/omidayoobe/sparta_work/blob/master/diagram/aws_diagram.png)
 
 ## Main 
 The diagram above shows the infrastructure of the project, which will be created. Whenever there is an event in personal Health Dashboard the logs of that event will be stored in CloudWatch logs. We will write CloudWatch Event Rules which will target the lambda. The rules will specify that anything related to aws.health, trigger the lambda and the lambda will grab the payload of the event and send the important parts of the payload to a slack channel.
