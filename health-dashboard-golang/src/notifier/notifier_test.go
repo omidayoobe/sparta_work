@@ -2,7 +2,7 @@ package notifier_test
 
 import (
 	"github.com/go-test/deep"
-	"health-dashboard-golang/notifier"
+	"notifier"
 	"strings"
 	"testing"
 )
@@ -39,7 +39,7 @@ AWS_RDS_SECURITY_NOTIFICATION
 We previously sent a communication in early October to update your RDS SSL/TLS certificates by October 31, 2019. We have extended the dates and now request that you act before February 5, 2020 to avoid interruption of your applications that use Secure Sockets Layer (SSL) or Transport Layer Security (TLS) to connect to your RDS and Aurora database instances. Note that this new date is only 4 weeks before the actual Certificate Authority (CA) expiration on March 5, 2020. Because our own deployments, testing, and scanning to validate all RDS instances are ready for the expiry must take place during the final 4 weeks, the February 5th date cannot be further extended.
 
 *Affected Entities:* 
-*teal-nonprod-staging-bank-rds-1*
+*nonprod-staging-rds-1*
 `
 	expectedMessage := &notifier.SlackMessage{Text: strings.TrimSpace(msg), IconEmoji: ":warning:"}
 	message, err := notifier.CloudWatchEventToMessage([]byte(payload))
