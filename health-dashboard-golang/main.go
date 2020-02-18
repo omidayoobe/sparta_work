@@ -8,7 +8,7 @@ import (
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/hashicorp/go-retryablehttp"
-	"health-dashboard-notifier/notifier"
+	"health-dashboard-golang/notifier"
 	"log"
 	"net/http"
 	"os"
