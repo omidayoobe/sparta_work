@@ -7,7 +7,7 @@ import (
 )
 
 type SlackMessage struct {
-	Text      string  `json:"text"`
+	Text      string `json:"text"`
 	IconEmoji string `json:"icon_emoji,omitempty"`
 }
 
@@ -24,7 +24,6 @@ type CloudwatchEvent struct {
 	Service          string           `json:"service"`
 	EventDescription []Description    `json:"eventDescription"`
 	AffectedEntities []AffectedEntity `json:"affectedEntities"`
-
 }
 
 func CloudWatchEventToMessage(source []byte) (*SlackMessage, error) {

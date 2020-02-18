@@ -14,7 +14,6 @@ import (
 	"os"
 )
 
-
 type NotificationHandler struct {
 	client     *retryablehttp.Client
 	webhookUrl string
@@ -67,5 +66,3 @@ func main() {
 	}
 	lambda.Start(h.Handler)
 }
-
-
