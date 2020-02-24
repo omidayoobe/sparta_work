@@ -1,0 +1,4 @@
+health-dashboard-warning: arn:aws:iam::687447591496:role/omidsRoleForMonitoring
+
+slack_warning:
+  secret_path: https://hooks.slack.com/services/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s
