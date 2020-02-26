@@ -6,6 +6,6 @@ provider "aws" {
 }
 
 module "health-dashboard-notifier" {
-  source = "https://github.com/omidayoobe/sparta_work/tree/master/terraform-health-dashboard/module"
+  source = "https://github.com/omidayoobe/sparta_work/tree/master/terraform-health-dashboard"
 
 }
