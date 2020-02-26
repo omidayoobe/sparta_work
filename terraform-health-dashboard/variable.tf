@@ -17,6 +17,6 @@ variable "timeout" {
 }
 
 variable "slack_warning" {
-  type = string
+  type    = string
   default = "xxxxx"
 }
