@@ -11,5 +11,5 @@ provider "aws" {
 module "health-dashboard-notifier" {
   source = "../terraform-health-dashboard"
   env = var.env
-  lambdas_folder = var.
+  lambdas_folder = ".../health-dashboard-notifier"
 }
