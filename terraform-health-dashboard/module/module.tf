@@ -51,7 +51,7 @@ resource "aws_lambda_function" "health_dashboard_notifier_lambda" {
 
   environment {
     variables = {
-      SLACK_WEBHOOK = var.slack_warning.secret_path
+      SLACK_WEBHOOK = var.slack_warning
     }
   }
 
