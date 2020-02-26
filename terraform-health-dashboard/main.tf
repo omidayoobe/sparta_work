@@ -1,20 +1,14 @@
 locals {
-  name      = "health-dashboard-notifier"
-  full_name = "${var.env}-${local.name}"
-  tags = {
-    Name        = local.full_name
-    Environment = var.env
-  }
+  name = "health-dashboard-notifier"
 }
 
 #------------------------------------------------------------------------------
 # CloudWatch Event
 #------------------------------------------------------------------------------
 resource "aws_cloudwatch_event_rule" "trigger_event" {
-  name          = local.full_name
+  name          = local.name
   description   = "captures health dashboard events"
   event_pattern = jsonencode({ "source" = ["aws.health"] })
-  tags          = local.tags
 }
 
 resource "aws_cloudwatch_event_target" "target" {

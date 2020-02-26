@@ -16,9 +16,8 @@ data "aws_iam_policy_document" "role_policy" {
 }
 
 resource "aws_iam_role" "lambda_role" {
-  name               = local.full_name
+  name               = local.name
   assume_role_policy = data.aws_iam_policy_document.role_policy.json
-  tags               = local.tags
 }
 
 resource "aws_iam_role_policy_attachment" "basic_execution" {
@@ -30,13 +29,13 @@ resource "aws_iam_role_policy_attachment" "basic_execution" {
 # Lambda
 #------------------------------------------------------------------------------
 data "archive_file" "lambda" {
-  source_file = "${var.lambdas_folder}/${local.name}"
+  source_file = "../${local.name}"
   output_path = "${path.module}/${local.name}.zip"
   type        = "zip"
 }
 
 resource "aws_lambda_function" "health_dashboard_notifier_lambda" {
-  function_name = local.full_name
+  function_name = local.name
   handler       = local.name
   role          = aws_iam_role.lambda_role.arn
   runtime       = "go1.x"
@@ -46,8 +45,6 @@ resource "aws_lambda_function" "health_dashboard_notifier_lambda" {
 
   filename         = data.archive_file.lambda.output_path
   source_code_hash = data.archive_file.lambda.output_base64sha256
-
-  tags = local.tags
 
   environment {
     variables = {
