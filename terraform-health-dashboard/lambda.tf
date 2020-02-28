@@ -29,7 +29,7 @@ resource "aws_iam_role_policy_attachment" "basic_execution" {
 # Lambda
 #------------------------------------------------------------------------------
 data "archive_file" "lambda" {
-  source_file = "../${local.name}"
+  source_file = "../${local.name}.zip"
   output_path = "${path.module}/${local.name}.zip"
   type        = "zip"
 }
