@@ -43,6 +43,6 @@ func textForEvent(event CloudwatchEvent) string {
 	description := strings.Split(event.EventDescription[0].LatestDescription, "  ")
 	sb := strings.Builder{}
 	sb.WriteString(fmt.Sprintf("*Service:* %v\n*Event Name:* \n%v\n\n*Event Description:* \n%v\n\n*Affected Entities:* \n*%v*",
-		event.Service, event.EventType, description[0], event.AffectedEntities[0].EntityValue, t))
+		event.Service, event.EventType, description[0], event.AffectedEntities[0].EntityValue))
 	return sb.String()
 }
